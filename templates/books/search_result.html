@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{%  block title %}Search{% endblock title   %}
+{% block content %}
+
+
+
+<div class="container"  style="margin-top: 200px;">
+    {% if object_list %}
+    <h3 class="text-center">List of {{ object_list.count }} books</h3>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">ISBN</th>
+          </tr>
+        </thead>
+        <tbody>
+
+            {% for book in object_list %}
+          <tr>
+ 
+            <th scope="row">{{ forloop.counter }}</th>
+
+           <td><a href="{% url 'book_detail' book.isbn %}">{{book.title}}</a></td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.isbn }}</td>
+          </tr>
+          {% endfor%}
+        <tbody>
+    <table>
+    {% else %}
+        <h3 class="text-center">No results for: <span class="text-muted">{{ query }}</span></h3>
+    {% endif %}
+
+</div>
+
+{% endblock content %}

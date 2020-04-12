@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block title %}{{ object.title }}{% endblock title %}
+{% block content %} 
+
+<section id="bookDetail">
+<div class="container-fluid" style="margin-top:100px">
+    <div class="row ">
+      <div class="col-md-4 col-sm-4 col-4 imgLayout">
+        <img class="img-fluid float-right" src="http://covers.openlibrary.org/b/isbn/{{ object.isbn }}-M.jpg" alt="">
+      </div>
+        <div class="col-md-8 col-sm-8 col-8">
+          <div class="card border-0">
+            
+             
+                <h3>{{object.title }}</h3>     
+                
+                <p class="card-text">by {{ object.author }} <span>({{object.year}})</span></p>
+                <P>{{average_rating}} ---  <span class="text-muted small">total {{ work_ratings_count }} ratings</span> </P>
+                <div class="star-rating mb-4"> 
+                {% if average_rating > 4 %}
+             
+                  <span class="fa fa-star" data-rating="1"></span>
+                  <span class="fa fa-star" data-rating="2"></span>
+                  <span class="fa fa-star" data-rating="3"></span>
+                  <span class="fa fa-star" data-rating="4"></span>
+                  <span class="fa fa-star-o" data-rating="5"></span>
+                 {%  elif average_rating > 3.5 %}
+                 
+                 <span class="fa fa-star" data-rating="1"></span>
+                 <span class="fa fa-star" data-rating="2"></span>
+                 <span class="fa fa-star" data-rating="3"></span>
+                 <span class="fas fa-star-half-alt " data-rating="4"></span>
+                 <span class="fa fa-star-o" data-rating="5"></span>
+            
+                
+                  {% elif average_rating > 3  %}
+                
+                  <span class="fa fa-star" data-rating="1"></span>
+                  <span class="fa fa-star" data-rating="2"></span>
+                  <span class="fa fa-star" data-rating="3"></span>
+                  <span class="fa fa-star-o" data-rating="4"></span>
+                  <span class="fa fa-star-o" data-rating="5"></span>
+                
+            
+                {% elif average_rating > 2  %}
+            
+                  <span class="fa fa-star" data-rating="1"></span>
+                  <span class="fa fa-star" data-rating="2"></span>
+                  <span class="fa fa-star-o" data-rating="3"></span>
+                  <span class="fa fa-star-o" data-rating="4"></span>
+                  <span class="fa fa-star-o" data-rating="5"></span>
+            
+                {% elif average_rating > 1  %}
+           
+                  <span class="fa fa-star" data-rating="1"></span>
+                  <span class="fa fa-star-o" data-rating="2"></span>
+                  <span class="fa fa-star-o" data-rating="3"></span>
+                  <span class="fa fa-star-o" data-rating="4"></span>
+                  <span class="fa fa-star-o" data-rating="5"></span>
+         
+                {%  else %}
+          
+                  <span class="fa fa-star-o" data-rating="1"></span>
+                  <span class="fa fa-star-o" data-rating="2"></span>
+                  <span class="fa fa-star-o" data-rating="3"></span>
+                  <span class="fa fa-star-o" data-rating="4"></span>
+                  <span class="fa fa-star-o" data-rating="5"></span>
+      
+                {% endif %}
+                </div>
+                <p class="card-text">ISBN: {{object.isbn}}  </p>
+          </div>
+        </div>
+    </div>
+</div>
+</section>
+
+
+{% endblock content %}

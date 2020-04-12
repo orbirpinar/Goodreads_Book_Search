@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Register{%  endblock title %}
+{% block content %} 
+
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center text-white mb-4">Bootstrap 4 Login Form</h2>
+             <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            <legend class="border-bottom mb-4">Kayıt Ol</legend>
+                            {{ form|crispy }}
+                        </fieldset>
+                        <div class="form-group">
+                            <button class="btn btn-outline-success" type="submit">Kayıt Ol</button>
+                        </div>
+                    </form>
+                    <div class="border-top pt-3">
+                        <small class="text-muted">
+                            Zaten hesabın var mı? <a class="ml-2" href="{% url 'login' %}">Giriş Yap</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
